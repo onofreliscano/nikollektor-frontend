@@ -1,15 +1,26 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import nikolector from "../../img/nikolector.jpg";
 import "../../styles/home.scss";
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
+	<div>
+		<div className="containerPrincipal">
+			<div className="mr-5">
+				<img src={nikolector} />
+			</div>
+			<div className="containerSecundario">
+				<div className="form-group">
+					<label>Usuario: </label>
+					<br />
+					<input type="text" className="form-control" name="username" />
+					<br />
+					<label>Contraseña: </label>
+					<br />
+					<input type="password" className="form-control" name="password" />
+					<br />
+					<button className="btn btn-primary">Iniciar Sesión</button>
+				</div>
+			</div>
+		</div>
 	</div>
 );
