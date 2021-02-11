@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import nikolector from "../../img/nikolector.jpg";
 import "../../styles/home.scss";
 
@@ -19,6 +20,12 @@ export const Home = () => (
 					<input type="password" className="form-control" name="password" />
 					<br />
 					<button className="btn btn-primary">Iniciar Sesión</button>
+					<br />
+					<div className="linea" />
+					<br />
+					<Link to="/Sign_In">
+						<button className="btn btn-primary">Registrarse</button>
+					</Link>
 				</div>
 			</div>
 		</div>
