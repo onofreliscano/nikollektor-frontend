@@ -23,8 +23,15 @@ export const Home = () => (
 					<br />
 					<div className="linea" />
 					<br />
+
+					<Link to="/Selections">
+						<button className="btn btn-primary">Eleccion</button>
+					</Link>
 					<Link to="/Sign_In">
-						<button className="btn btn-primary">Registrarse</button>
+						<button className="btn btn-primary">Registrar Manager</button>
+					</Link>
+					<Link to="/Company_S_I">
+						<button className="btn btn-primary">Registrar Compania</button>
 					</Link>
 				</div>
 			</div>
