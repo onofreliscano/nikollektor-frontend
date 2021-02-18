@@ -1,50 +1,106 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import nikolector from "../../img/nikolector.jpg";
-import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+// import {store} from
 
-export const Sign_In = () => (
-	<div>
-		<div className="containerPrincipal">
-			<div className="mr-5">
-				<img src={nikolector} />
-			</div>
-			<div className="containerSecundario">
-				<h1>Registro</h1>
-				<h2>Paso 3. Datos del gerente de RRHH</h2>
-				<p> Por favor especifica tus datos para registrarte en nuestra plataforma</p>
-				<div className="form-group">
-					<label>Usuario: </label>
-					<br />
-					<input type="text" className="form-control" name="username" />
-					<br />
-					<label>Contraseña: </label>
-					<br />
-					<input type="password" className="form-control" name="password" />
-					<br />
-					<label>Correo electrónico:</label>
-					<br />
-					<input type="text" className="form-control" name="email" />
-					<br />
-					<label>Empresa: </label>
-					<br />
-					<input type="text" className="form-control" name="company" />
-					<br />
-					<label>Compañia ID: </label>
-					<br />
-					<input type="text" className="form-control" name="company_id" />
-					<br />
-					<label>País: </label>
-					<br />
-					<input type="text" className="form-control" name="country" />
-					<br />
-					<label>Ciudad: </label>
-					<br />
-					<input type="text" className="form-control" name="city" />
-					<br />
-					<button className="btn btn-primary">Registrarse</button>
-					<br />
+const Sign_In = () => {
+	const initialState = { email: "", full_name: "", password: "", company_id: "" };
+	const [datos, setDatos] = useState(initialState);
+	const [error, setError] = useState(false);
+	const { store, actions } = useContext(Context);
+
+	const handleChange = e => {
+		setDatos({
+			...datos,
+			[e.target.name]: e.target.value
+		});
+		console.log(datos);
+	};
+	const handleSubmit = e => {
+		if (
+			datos.email.trim() === "" ||
+			datos.full_name.trim() === "" ||
+			datos.password.trim() === "" ||
+			datos.company_id.trim() === ""
+		) {
+			setError(true);
+
+			return;
+		} else {
+			console.log("enviamos formulario");
+			setError(false);
+			actions.registroManager(datos);
+		}
+	};
+
+	return (
+		<div>
+			<div className="containerPrincipal">
+				<div className="mr-5">
+					<img src={nikolector} />
+				</div>
+				<div className="containerSecundario">
+					<h1>Registro</h1>
+					<h2>Paso 3. Datos del gerente de RRHH</h2>
+					<p> Por favor especifica tus datos para registrarte en nuestra plataforma</p>
+					<div className="form-group">
+						<label>Correo electrónico:</label>
+						<br />
+						<input
+							type="text"
+							className="form-control"
+							name="email"
+							onChange={handleChange}
+							value={datos.email}
+						/>
+						<br />
+						<label>Nombre: </label>
+						<br />
+						<input
+							type="text"
+							className="form-control"
+							name="full_name"
+							onChange={handleChange}
+							value={datos.full_name}
+						/>
+						<br />
+
+						<label>Contraseña: </label>
+						<br />
+						<input
+							type="password"
+							className="form-control"
+							name="password"
+							onChange={handleChange}
+							value={datos.password}
+						/>
+						<br />
+						<br />
+						<label>ID de la Compañia: </label>
+						<br />
+						<input
+							type="number"
+							className="form-control"
+							name="company_id"
+							onChange={handleChange}
+							value={datos.company_id}
+						/>
+						<br />
+
+						<button
+							className="btn btn-primary"
+							onClick={() => {
+								handleSubmit();
+							}}>
+							Registrarse
+						</button>
+						<br />
+						{error ? <div>soy un error, todos los campos deben ser validos</div> : null}
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-);
+	);
+};
+
+export default Sign_In;

@@ -13,33 +13,21 @@ export const HumanT_S_I = () => (
 				<h2>Paso 2. Datos del talento humano</h2>
 				<p> Por favor especifica tus datos para registrarte en nuestra plataforma</p>
 				<div className="form-group">
-					<label>Usuario: </label>
+					<label>Correo electrónico:</label>
 					<br />
-					<input type="text" className="form-control" name="username" />
+					<input type="text" className="form-control" name="email" />
+					<br />
+					<label>Nombre: </label>
+					<br />
+					<input type="text" className="form-control" name="full_name" />
 					<br />
 					<label>Contraseña: </label>
 					<br />
 					<input type="password" className="form-control" name="password" />
 					<br />
-					<label>Correo electrónico:</label>
-					<br />
-					<input type="text" className="form-control" name="email" />
-					<br />
-					<label>Empresa: </label>
-					<br />
-					<input type="text" className="form-control" name="company" />
-					<br />
 					<label>Compañia ID: </label>
 					<br />
 					<input type="text" className="form-control" name="company_id" />
-					<br />
-					<label>País: </label>
-					<br />
-					<input type="text" className="form-control" name="country" />
-					<br />
-					<label>Ciudad: </label>
-					<br />
-					<input type="text" className="form-control" name="city" />
 					<br />
 					<label>ID de equipo: </label>
 					<br />

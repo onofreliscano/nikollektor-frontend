@@ -9,7 +9,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Sign_In } from "./component/Sign_In";
+import Sign_In from "./component/Sign_In";
 import { Company_S_I } from "./component/Company_S_I";
 import Selections from "./component/Selections";
 import { HumanT_S_I } from "./component/HumanT_S_I";

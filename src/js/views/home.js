@@ -27,12 +27,6 @@ export const Home = () => (
 					<Link to="/Selections">
 						<button className="btn btn-primary">Registrate</button>
 					</Link>
-					{/* <Link to="/Sign_In">
-						<button className="btn btn-primary">Registrar Manager</button>
-					</Link>
-					<Link to="/Company_S_I">
-						<button className="btn btn-primary">Registrar Compania</button>
-					</Link> */}
 				</div>
 			</div>
 		</div>

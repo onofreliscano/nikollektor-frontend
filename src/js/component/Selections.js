@@ -39,13 +39,13 @@ const Election = () => {
 					<div className="radio">
 						<label>
 							<input type="radio" value="HR-Manager" onChange={onValueChange} />
-							Manager de RRHH
+							<b>Manager de RRHH</b>
 						</label>
 					</div>
 					<div className="radio">
 						<label>
 							<input type="radio" value="Human-Talent" onChange={onValueChange} />
-							Talento Humano
+							<b>Talento Humano</b>
 						</label>
 					</div>
 					<div>Seleccionaste : {rol}</div>
