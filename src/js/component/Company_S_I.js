@@ -9,6 +9,9 @@ export const Company_S_I = () => (
 				<img src={nikolector} />
 			</div>
 			<div className="containerSecundario">
+				<h1>Registro</h1>
+				<h2>Paso 2. Datos de la compania</h2>
+				<p> Por favor especifica los datos de la compania que deseas registrar</p>
 				<div className="form-group">
 					<label>Nombre de la compania </label>
 					<br />
@@ -29,7 +32,9 @@ export const Company_S_I = () => (
 					<label>Identificador: </label>
 					<input type="text" className="form-control" name="company" />
 					<br />
-					<button className="btn btn-primary">Registrarse</button>
+					<Link to="/Sign_In">
+						<button className="btn btn-primary">Registrar compania</button>
+					</Link>
 					<br />
 				</div>
 			</div>

@@ -2,7 +2,7 @@ import React from "react";
 import nikolector from "../../img/nikolector.jpg";
 import { Link } from "react-router-dom";
 
-export const Sign_In = () => (
+export const HumanT_S_I = () => (
 	<div>
 		<div className="containerPrincipal">
 			<div className="mr-5">
@@ -10,7 +10,7 @@ export const Sign_In = () => (
 			</div>
 			<div className="containerSecundario">
 				<h1>Registro</h1>
-				<h2>Paso 3. Datos del gerente de RRHH</h2>
+				<h2>Paso 2. Datos del talento humano</h2>
 				<p> Por favor especifica tus datos para registrarte en nuestra plataforma</p>
 				<div className="form-group">
 					<label>Usuario: </label>
@@ -40,6 +40,10 @@ export const Sign_In = () => (
 					<label>Ciudad: </label>
 					<br />
 					<input type="text" className="form-control" name="city" />
+					<br />
+					<label>ID de equipo: </label>
+					<br />
+					<input type="text" className="form-control" name="Team_id" />
 					<br />
 					<button className="btn btn-primary">Registrarse</button>
 					<br />

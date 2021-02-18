@@ -25,14 +25,14 @@ export const Home = () => (
 					<br />
 
 					<Link to="/Selections">
-						<button className="btn btn-primary">Eleccion</button>
+						<button className="btn btn-primary">Registrate</button>
 					</Link>
-					<Link to="/Sign_In">
+					{/* <Link to="/Sign_In">
 						<button className="btn btn-primary">Registrar Manager</button>
 					</Link>
 					<Link to="/Company_S_I">
 						<button className="btn btn-primary">Registrar Compania</button>
-					</Link>
+					</Link> */}
 				</div>
 			</div>
 		</div>

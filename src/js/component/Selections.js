@@ -1,44 +1,61 @@
 /* eslint-disable react/react-in-jsx-scope */
-import React from "react";
+import React, { useState } from "react";
 import nikolector from "../../img/nikolector.jpg";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-class Election extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { value: "Human_talent" };
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
+const Election = () => {
+	const [rol, setRol] = useState("");
+	let history = useHistory();
+	const onValueChange = e => {
+		setRol(e.target.value);
+	};
+	const formSubmit = () => {
+		if (rol === "Human-Talent") {
+			history.push("/HumanT_S_I");
+		} else {
+			history.push("/Company_S_I");
+		}
+	};
 
-	handleChange(event) {
-		this.setState({ value: event.target.value });
-	}
-
-	handleSubmit(event) {
-		alert("Eres: " + this.state.value);
-		event.preventDefault();
-	}
-
-	render() {
-		return (
-			<div>
-				<div className="mr-5">
-					<img src={nikolector} />
-				</div>
-				<form onSubmit={this.handleSubmit}>
-					<label>
-						Selecciona tu rol en la compania:
-						<br />
-						<select value={this.state.value} onChange={this.handleChange}>
-							<option value="HRManager">Manager de recursos humanos</option>
-							<option value="Human_talent">Talento Humano</option>
-						</select>
-					</label>
-					<input type="submit" value="Submit" />
-				</form>
+	return (
+		<div className="containerPrincipal">
+			<div className="mr-5">
+				<img src={nikolector} />
 			</div>
-		);
-	}
-}
+			<form>
+				<div className="containerSecundario">
+					<div className="titles">
+						<h1>Registro</h1>
+						<h2>Paso 1</h2>
+					</div>
+					<div className="parrafo">
+						<p>
+							Bienvenido a nikolector, para que podemos brindarte nuestros servicios primero debes
+							seleccionar una de estas opciones para empezar el registro.
+							<br />
+							Que rol cumples en tu compania?
+						</p>
+					</div>
+					<div className="radio">
+						<label>
+							<input type="radio" value="HR-Manager" onChange={onValueChange} />
+							Manager de RRHH
+						</label>
+					</div>
+					<div className="radio">
+						<label>
+							<input type="radio" value="Human-Talent" onChange={onValueChange} />
+							Talento Humano
+						</label>
+					</div>
+					<div>Seleccionaste : {rol}</div>
+					<button className="btn btn-primary" onClick={formSubmit}>
+						Submit
+					</button>
+				</div>
+			</form>
+		</div>
+	);
+};
+
 export default Election;
