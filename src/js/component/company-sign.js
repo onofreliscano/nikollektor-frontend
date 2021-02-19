@@ -2,7 +2,7 @@ import React from "react";
 import nikolector from "../../img/nikolector.jpg";
 import { Link } from "react-router-dom";
 
-export const Company_S_I = () => (
+const CompanySign = () => (
 	<div>
 		<div className="containerPrincipal">
 			<div className="mr-5">
@@ -10,10 +10,10 @@ export const Company_S_I = () => (
 			</div>
 			<div className="containerSecundario">
 				<h1>Registro</h1>
-				<h2>Paso 2. Datos de la compania</h2>
-				<p> Por favor especifica los datos de la compania que deseas registrar</p>
+				<h2>Paso 2. Datos de la compañia</h2>
+				<p> Por favor especifica los datos de la compañia que deseas registrar</p>
 				<div className="form-group">
-					<label>Nombre de la compania </label>
+					<label>Nombre de la compañia </label>
 					<br />
 					<input type="text" className="form-control" name="username" />
 					<br />
@@ -32,8 +32,8 @@ export const Company_S_I = () => (
 					<label>Identificador: </label>
 					<input type="text" className="form-control" name="company" />
 					<br />
-					<Link to="/Sign_In">
-						<button className="btn btn-primary">Registrar compania</button>
+					<Link to="/sign-in">
+						<button className="btn btn-primary">Registrar compañia</button>
 					</Link>
 					<br />
 				</div>
@@ -41,3 +41,5 @@ export const Company_S_I = () => (
 		</div>
 	</div>
 );
+
+export default CompanySign;

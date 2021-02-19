@@ -11,9 +11,9 @@ const Election = () => {
 	};
 	const formSubmit = () => {
 		if (rol === "Human-Talent") {
-			history.push("/HumanT_S_I");
+			history.push("/human-talent-sign");
 		} else {
-			history.push("/Company_S_I");
+			history.push("/company-sign");
 		}
 	};
 
@@ -33,7 +33,7 @@ const Election = () => {
 							Bienvenido a nikolector, para que podemos brindarte nuestros servicios primero debes
 							seleccionar una de estas opciones para empezar el registro.
 							<br />
-							Que rol cumples en tu compania?
+							Que rol cumples en tu compañia?
 						</p>
 					</div>
 					<div className="radio">

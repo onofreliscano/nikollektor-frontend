@@ -24,7 +24,7 @@ export const Home = () => (
 					<div className="linea" />
 					<br />
 
-					<Link to="/Selections">
+					<Link to="/selections">
 						<button className="btn btn-primary">Registrate</button>
 					</Link>
 				</div>

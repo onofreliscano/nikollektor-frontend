@@ -3,7 +3,7 @@ import nikolector from "../../img/nikolector.jpg";
 import { Context } from "../store/appContext";
 // import {store} from
 
-const Sign_In = () => {
+const SignIn = () => {
 	const initialState = { email: "", full_name: "", password: "", company_id: "" };
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
@@ -103,4 +103,4 @@ const Sign_In = () => {
 	);
 };
 
-export default Sign_In;
+export default SignIn;

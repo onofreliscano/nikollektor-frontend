@@ -9,10 +9,10 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import Sign_In from "./component/Sign_In";
-import { Company_S_I } from "./component/Company_S_I";
-import Selections from "./component/Selections";
-import { HumanT_S_I } from "./component/HumanT_S_I";
+import SignIn from "./component/sign-in";
+import CompanySign from "./component/company-sign";
+import Selections from "./component/selections";
+import HumanTalentSign from "./component/human-t-sign";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -28,17 +28,17 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/Sign_In">
-							<Sign_In />
+						<Route exact path="/sign-in">
+							<SignIn />
 						</Route>
-						<Route exact path="/Company_S_I">
-							<Company_S_I />
+						<Route exact path="/company-sign">
+							<CompanySign />
 						</Route>
-						<Route exact path="/Selections">
+						<Route exact path="/selections">
 							<Selections />
 						</Route>
-						<Route exact path="/HumanT_S_I">
-							<HumanT_S_I />
+						<Route exact path="/human-talent-sign">
+							<HumanTalentSign />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />

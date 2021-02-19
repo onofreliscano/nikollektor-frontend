@@ -2,7 +2,7 @@ import React from "react";
 import nikolector from "../../img/nikolector.jpg";
 import { Link } from "react-router-dom";
 
-export const HumanT_S_I = () => (
+const HumanTalentSign = () => (
 	<div>
 		<div className="containerPrincipal">
 			<div className="mr-5">
@@ -40,3 +40,5 @@ export const HumanT_S_I = () => (
 		</div>
 	</div>
 );
+
+export default HumanTalentSign;
