@@ -1,44 +1,113 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import nikolector from "../../img/nikolector.jpg";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-const HumanTalentSign = () => (
-	<div>
-		<div className="containerPrincipal">
-			<div className="mr-5">
-				<img src={nikolector} />
-			</div>
-			<div className="containerSecundario">
-				<h1>Registro</h1>
-				<h2>Paso 2. Datos del talento humano</h2>
-				<p> Por favor especifica tus datos para registrarte en nuestra plataforma</p>
-				<div className="form-group">
-					<label>Correo electrónico:</label>
-					<br />
-					<input type="text" className="form-control" name="email" />
-					<br />
-					<label>Nombre: </label>
-					<br />
-					<input type="text" className="form-control" name="full_name" />
-					<br />
-					<label>Contraseña: </label>
-					<br />
-					<input type="password" className="form-control" name="password" />
-					<br />
-					<label>Compañia ID: </label>
-					<br />
-					<input type="text" className="form-control" name="company_id" />
-					<br />
-					<label>ID de equipo: </label>
-					<br />
-					<input type="text" className="form-control" name="Team_id" />
-					<br />
-					<button className="btn btn-primary">Registrarse</button>
-					<br />
+const HumanTalentSign = () => {
+	const initialState = { email: "", full_name: "", password: "", company_id: "", team_id: "" };
+	const [datos, setDatos] = useState(initialState);
+	const [error, setError] = useState(false);
+	const { store, actions } = useContext(Context);
+
+	const handleChange = e => {
+		setDatos({
+			...datos,
+			[e.target.name]: e.target.value
+		});
+		console.log(datos);
+	};
+	const handleSubmit = e => {
+		if (
+			datos.email.trim() === "" ||
+			datos.full_name.trim() === "" ||
+			datos.password.trim() === "" ||
+			datos.company_id.trim() === "" ||
+			datos.team_id.trim() === ""
+		) {
+			setError(true);
+			return;
+		} else {
+			console.log("enviamos formulario");
+			setError(false);
+			actions.registroHumanTalent(datos);
+		}
+	};
+
+	return (
+		<div>
+			<div className="containerPrincipal">
+				<div className="mr-5">
+					<img src={nikolector} />
+				</div>
+				<div className="containerSecundario">
+					<h1>Registro</h1>
+					<h2>Paso 2. Datos del talento humano</h2>
+					<p> Por favor especifica tus datos para registrarte en nuestra plataforma</p>
+					<div className="form-group">
+						<label>Correo electrónico:</label>
+						<br />
+						<input
+							type="text"
+							className="form-control"
+							name="email"
+							onChange={handleChange}
+							value={datos.email}
+						/>
+						<br />
+						<label>Nombre: </label>
+						<br />
+						<input
+							type="text"
+							className="form-control"
+							name="full_name"
+							onChange={handleChange}
+							value={datos.full_name}
+						/>
+						<br />
+						<label>Contraseña: </label>
+						<br />
+						<input
+							type="password"
+							className="form-control"
+							name="password"
+							onChange={handleChange}
+							value={datos.password}
+						/>
+						<br />
+						<label>Compañia ID: </label>
+						<br />
+						<input
+							type="text"
+							className="form-control"
+							name="company_id"
+							onChange={handleChange}
+							value={datos.company_id}
+						/>
+						<br />
+						<label>ID de equipo: </label>
+						<br />
+						<input
+							type="text"
+							className="form-control"
+							name="team_id"
+							onChange={handleChange}
+							value={datos.team_id}
+						/>
+						<br />
+						<button
+							className="btn btn-primary"
+							onClick={() => {
+								handleSubmit();
+							}}>
+							Registrarse
+						</button>
+						<br />
+						{error ? <div>soy un error, todos los campos deben ser validos</div> : null}
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-);
+	);
+};
 
 export default HumanTalentSign;
