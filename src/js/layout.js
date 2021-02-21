@@ -13,6 +13,8 @@ import SignIn from "./component/sign-in";
 import CompanySign from "./component/company-sign";
 import Selections from "./component/selections";
 import HumanTalentSign from "./component/human-t-sign";
+import TeamSignIn from "./component/Team-sign";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -39,6 +41,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/human-talent-sign">
 							<HumanTalentSign />
+						</Route>
+						<Route exact path="/Team-sign">
+							<TeamSignIn />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />

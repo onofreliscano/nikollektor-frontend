@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import nikolector from "../../img/nikolector.jpg";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
-import "../../styles/home.scss";
+// import {store} from
 
-export const Home = () => {
-	const initialState = { email: "", full_name: "", password: "", company_id: "" };
+const TeamSignIn = () => {
+	const initialState = { name: "", description: "", company_id: "" };
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
@@ -18,14 +17,14 @@ export const Home = () => {
 		console.log(datos);
 	};
 	const handleSubmit = e => {
-		if (datos.email.trim() === "" || datos.password.trim() === "") {
+		if (datos.name.trim() === "" || datos.description.trim() === "" || datos.company_id.trim() === "") {
 			setError(true);
 
 			return;
 		} else {
 			console.log("enviamos formulario");
 			setError(false);
-			actions.Login(datos);
+			actions.registroTeam(datos);
 		}
 	};
 
@@ -36,47 +35,55 @@ export const Home = () => {
 					<img src={nikolector} />
 				</div>
 				<div className="containerSecundario">
+					<h1>Registro</h1>
+					<h2>Paso 1. Datos del equipo</h2>
+					<p> Por favor especifica los datods del equipo para registrarlo en nuestra plataforma</p>
 					<div className="form-group">
-						<label>Email: </label>
+						<label>Nombre: </label>
 						<br />
 						<input
 							type="text"
 							className="form-control"
-							name="email"
+							name="name"
 							onChange={handleChange}
-							value={datos.email}
+							value={datos.name}
 						/>
 						<br />
-						<label>Contraseña: </label>
+						<label>Descripcion del equipo: </label>
 						<br />
 						<input
-							type="password"
+							type="text"
 							className="form-control"
-							name="password"
+							name="description"
 							onChange={handleChange}
-							value={datos.password}
+							value={datos.description}
 						/>
 						<br />
+						<label>ID de la Compañia: </label>
+						<br />
+						<input
+							type="number"
+							className="form-control"
+							name="company_id"
+							onChange={handleChange}
+							value={datos.company_id}
+						/>
+						<br />
+
 						<button
 							className="btn btn-primary"
 							onClick={() => {
 								handleSubmit();
 							}}>
-							Iniciar Sesión
+							Registrarse
 						</button>
 						<br />
 						{error ? <div>soy un error, todos los campos deben ser validos</div> : null}
-						<div className="linea" />
-						<br />
-						<Link to="/selections">
-							<button className="btn btn-primary">Registrate</button>
-						</Link>
-						<Link to="/Team-sign">
-							<button className="btn btn-primary">Registra Equipo</button>
-						</Link>
 					</div>
 				</div>
 			</div>
 		</div>
 	);
 };
+
+export default TeamSignIn;
