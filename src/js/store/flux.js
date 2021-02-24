@@ -63,7 +63,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const respuesta = await fetch(`${BASE_URL}/HRManager/team_create`, {
 						method: "POST",
 						body: JSON.stringify(datos),
-						headers: { "Content-Type": "application/json" }
+						headers: {
+							"Content-Type": "application/json"
+						}
 					});
 					let resultado = await respuesta.json();
 					console.log(resultado);
@@ -85,6 +87,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("explote", error);
 				}
 			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
