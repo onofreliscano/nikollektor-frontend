@@ -1,19 +1,11 @@
+import { useHistory } from "react-router-dom";
+
 const BASE_URL = "http://localhost:5000";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			jwt: null,
+			is_manager: false
 		},
 		actions: {
 			registroManager: async datos => {
@@ -46,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			registroHumanTalent: async datos => {
 				try {
-					const respuesta = await fetch(`${BASE_URL}/HRManager/new_talent`, {
+					const respuesta = await fetch(`${BASE_URL}/human_talent`, {
 						method: "POST",
 						body: JSON.stringify(datos),
 						headers: { "Content-Type": "application/json" }
@@ -60,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			registroTeam: async datos => {
 				try {
-					const respuesta = await fetch(`${BASE_URL}/HRManager/team_create`, {
+					const respuesta = await fetch(`${BASE_URL}/team_create`, {
 						method: "POST",
 						body: JSON.stringify(datos),
 						headers: { "Content-Type": "application/json" }
@@ -72,9 +64,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			Login: async datos => {
+			login: async datos => {
 				try {
 					const respuesta = await fetch(`${BASE_URL}/login`, {
+						method: "POST",
+						body: JSON.stringify(datos),
+						headers: { "Content-Type": "application/json" }
+					});
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						console.log(resultado);
+						setStore({
+							jwt: resultado.jwt,
+							is_manager: resultado.is_manager
+						});
+						return true;
+					}
+					return false;
+					// let history = useHistory();
+					// history.push("/Welcome");
+				} catch (error) {
+					console.log("explote", error);
+				}
+			},
+
+			registroMoods: async datos => {
+				try {
+					const respuesta = await fetch(`${BASE_URL}/moods`, {
 						method: "POST",
 						body: JSON.stringify(datos),
 						headers: { "Content-Type": "application/json" }
