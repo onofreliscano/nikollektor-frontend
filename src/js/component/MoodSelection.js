@@ -53,7 +53,7 @@ const Moodselection = () => {
 				</button>
 				<button className="btn btn-primary" name="Neutral" value={datos.face_value} onClick={handleChange}>
 					😐
-				</button>
+				</button> 
 				<button className="btn btn-primary" name="Sad" value={datos.face_value} onClick={handleChange}>
 					🙁
 				</button>
