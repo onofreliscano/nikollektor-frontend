@@ -19,16 +19,19 @@ const Moodselection = () => {
 		});
 		console.log(datos);
 		if (datos.name == "Awesome") {
-			datos.face_value == 5;
+			setDatos({
+				...datos,
+				face_value = 5
+			});
 		}
 		if (datos.name == "Happy") {
-			datos.face_value == 4;
+			datos.face_value = 4;
 		} else if (datos.name == "Neutral") {
-			datos.face_value == 3;
+			datos.face_value = 3;
 		} else if (datos.name == "Sad") {
-			datos.face_value == 2;
+			datos.face_value = 2;
 		} else if (datos.name == "Angry") {
-			datos.face_value == 1;
+			datos.face_value = 1;
 		}
 	};
 	const handleSubmit = e => {
@@ -45,13 +48,21 @@ const Moodselection = () => {
 				<h4>1)Whats your mood today?</h4>
 			</div>
 			<div className="moods">
-				<button className="btn btn-primary" name="Awesome" value={datos.face_value} onClick={handleChange}>
+				<button 
+					className={datos.face_value == 5 ? "btn btn-primary" : "btn btn-outline-primary"} 
+					name="awesome"
+					value={1}
+					onClick={e => setDatos({
+						name: e.target.name, 
+						face_value: e.target.value
+					})}
+				>
 					😀
 				</button>
-				<button className="btn btn-primary" name="Happy" value={datos.face_value} onClick={handleChange}>
+				<button className="btn btn-primary" name="name" value={2} onClick={handleChange}>
 					😁
 				</button>
-				<button className="btn btn-primary" name="Neutral" value={datos.face_value} onClick={handleChange}>
+				<button className="btn btn-primary" name="name" value={datos.face_value} onClick={handleChange}>
 					😐
 				</button>
 				<button className="btn btn-primary" name="Sad" value={datos.face_value} onClick={handleChange}>
