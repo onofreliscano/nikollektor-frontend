@@ -11,9 +11,12 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import SignIn from "./component/sign-in";
 import CompanySign from "./component/company-sign";
-import Selections from "./component/selections";
+import Selections from "./component/Selections";
 import HumanTalentSign from "./component/human-t-sign";
 import TeamSignIn from "./component/Team-sign";
+import Welcome from "./component/Welcome";
+import MoodSelection from "./component/MoodSelection";
+import Dashboards from "./views/Dashboards";
 
 //create your first component
 const Layout = () => {
@@ -36,8 +39,14 @@ const Layout = () => {
 						<Route exact path="/company-sign">
 							<CompanySign />
 						</Route>
+						<Route exact path="/MoodSelection">
+							<MoodSelection />
+						</Route>
 						<Route exact path="/selections">
 							<Selections />
+						</Route>
+						<Route exact path="/Welcome">
+							<Welcome />
 						</Route>
 						<Route exact path="/human-talent-sign">
 							<HumanTalentSign />
@@ -47,6 +56,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/dashboards">
+							<Dashboards />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

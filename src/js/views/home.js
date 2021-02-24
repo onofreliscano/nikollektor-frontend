@@ -3,12 +3,14 @@ import nikolector from "../../img/nikolector.jpg";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/home.scss";
+import { useHistory } from "react-router-dom";
 
 export const Home = () => {
 	const initialState = { email: "", full_name: "", password: "", company_id: "" };
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
+	let history = useHistory();
 
 	const handleChange = e => {
 		setDatos({
@@ -17,15 +19,17 @@ export const Home = () => {
 		});
 		console.log(datos);
 	};
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		if (datos.email.trim() === "" || datos.password.trim() === "") {
 			setError(true);
-
 			return;
 		} else {
 			console.log("enviamos formulario");
 			setError(false);
-			actions.Login(datos);
+			let succes = await actions.login(datos);
+			if (succes) {
+				history.push("/Welcome");
+			}
 		}
 	};
 
@@ -57,6 +61,7 @@ export const Home = () => {
 							value={datos.password}
 						/>
 						<br />
+
 						<button
 							className="btn btn-primary"
 							onClick={() => {
@@ -64,12 +69,16 @@ export const Home = () => {
 							}}>
 							Iniciar Sesión
 						</button>
+
 						<br />
 						{error ? <div>soy un error, todos los campos deben ser validos</div> : null}
 						<div className="linea" />
 						<br />
 						<Link to="/selections">
 							<button className="btn btn-primary">Registrate</button>
+						</Link>
+						<Link to="MoodSelection">
+							<button className="btn btn-primary">Registra mood</button>
 						</Link>
 						<Link to="/Team-sign">
 							<button className="btn btn-primary">Registra Equipo</button>
