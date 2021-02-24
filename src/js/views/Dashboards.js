@@ -32,8 +32,3 @@ const Dashboards = () => {
 };
 
 export default Dashboards;
-
-{
-	/* <GraphicLine />
-<Graphic /> */
-}

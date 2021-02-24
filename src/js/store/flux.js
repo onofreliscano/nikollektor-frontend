@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			jwt: null,
-			is_manager: false
+			is_manager: false,
+			list_human: []
 		},
 		actions: {
 			registroManager: async datos => {
@@ -58,6 +59,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						headers: {
 							"Content-Type": "application/json"
 						}
+					});
+					let resultado = await respuesta.json();
+					console.log(resultado);
+				} catch (error) {
+					console.log("explote", error);
+				}
+			},
+
+			listHuman: async datos => {
+				try {
+					const respuesta = await fetch(`${BASE_URL}/teams`, {
+						method: "GET"
 					});
 					let resultado = await respuesta.json();
 					console.log(resultado);
