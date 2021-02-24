@@ -14,6 +14,8 @@ import CompanySign from "./component/company-sign";
 import Selections from "./component/selections";
 import HumanTalentSign from "./component/human-t-sign";
 import TeamSignIn from "./component/Team-sign";
+import Welcome from "./component/Welcome";
+import MoodSelection from "./component/MoodSelection";
 import Dashboards from "./views/Dashboards";
 
 //create your first component
@@ -37,8 +39,14 @@ const Layout = () => {
 						<Route exact path="/company-sign">
 							<CompanySign />
 						</Route>
+						<Route exact path="/MoodSelection">
+							<MoodSelection />
+						</Route>
 						<Route exact path="/selections">
 							<Selections />
+						</Route>
+						<Route exact path="/Welcome">
+							<Welcome />
 						</Route>
 						<Route exact path="/human-talent-sign">
 							<HumanTalentSign />
