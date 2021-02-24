@@ -77,11 +77,8 @@ export const Home = () => {
 						<Link to="/selections">
 							<button className="btn btn-primary">Registrate</button>
 						</Link>
-						<Link to="/moodSelection">
-							<button className="btn btn-primary">Registrate</button>
-						</Link>
-						<Link to="/Faces-selection">
-							<button className="btn btn-primary">Registra tu mood</button>
+						<Link to="MoodSelection">
+							<button className="btn btn-primary">Registra mood</button>
 						</Link>
 						<Link to="/Team-sign">
 							<button className="btn btn-primary">Registra Equipo</button>

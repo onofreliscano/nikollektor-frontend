@@ -8,7 +8,7 @@ const Welcome = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<div>
-			{store.jwt && store.is_manager ? (
+			{store.jwt && !store.is_manager ? (
 				<div className="container">
 					<h1>Welcome!</h1>
 					<br />
@@ -22,7 +22,7 @@ const Welcome = () => {
 					<Link to="/human-talent-sign">
 						<button className="btn btn-primary">Add Human Talent</button>
 					</Link>
-					<Link to="/Team-sign">
+					<Link to="/MoodSelection">
 						<button className="btn btn-primary">Dashboards</button>
 					</Link>
 					<div className="mr-5">

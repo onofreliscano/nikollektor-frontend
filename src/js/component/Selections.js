@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import nikolector from "../../img/nikolector.jpg";
 import { useHistory } from "react-router-dom";
 
-const Election = () => {
+const Selection = () => {
 	const [rol, setRol] = useState("");
 	let history = useHistory();
 	const onValueChange = e => {
@@ -58,4 +58,4 @@ const Election = () => {
 	);
 };
 
-export default Election;
+export default Selection;

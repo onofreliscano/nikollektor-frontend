@@ -11,7 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import SignIn from "./component/sign-in";
 import CompanySign from "./component/company-sign";
-import Selections from "./component/selections";
+import Selections from "./component/Selections";
 import HumanTalentSign from "./component/human-t-sign";
 import TeamSignIn from "./component/Team-sign";
 import Welcome from "./component/Welcome";
