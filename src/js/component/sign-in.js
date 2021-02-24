@@ -3,6 +3,7 @@ import nikollectorImgStep3Thinking from "../../img/img-step3-thinking.png";
 import { Context } from "../store/appContext";
 import { fadeInDown } from "react-animations";
 import Radium, { StyleRoot } from "radium";
+import { useHistory } from "react-router-dom";
 // import {store} from
 
 const styles = {
@@ -17,7 +18,7 @@ const SignIn = () => {
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
-
+	const history = useHistory();
 	const handleChange = e => {
 		setDatos({
 			...datos,
@@ -25,20 +26,24 @@ const SignIn = () => {
 		});
 		console.log(datos);
 	};
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		if (
 			datos.email.trim() === "" ||
 			datos.full_name.trim() === "" ||
-			datos.password.trim() === "" ||
-			datos.company_id.trim() === ""
+			datos.password.trim() === ""
+			// datos.password.trim() === "" ||
+			// datos.company_id.trim() === ""
 		) {
 			setError(true);
-
-			return;
 		} else {
 			console.log("enviamos formulario");
 			setError(false);
-			actions.registroManager(datos);
+			let success = await actions.registroManager(datos);
+			if (success) {
+				history.push("/");
+			} else {
+				alert("NOT!");
+			}
 		}
 	};
 
@@ -76,16 +81,17 @@ const SignIn = () => {
 									value={datos.password}
 									placeholder="password (this is temporary)"
 								/>
-								<input
+								{/* <input
 									type="number"
 									className="form-control"
 									name="company_id"
 									onChange={handleChange}
 									value={datos.company_id}
 									placeholder="company ID (this is temporary)"
-								/>
+								/> */}
 								<button
 									className="nikollector-button"
+									type="button"
 									onClick={() => {
 										handleSubmit();
 									}}>

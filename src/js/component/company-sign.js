@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { fadeInDown } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 import nikollectorImgStep2Three from "../../img/img-step2-three.png";
@@ -17,7 +17,7 @@ const CompanySign = () => {
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
-
+	const history = useHistory();
 	const handleChange = e => {
 		setDatos({
 			...datos,
@@ -25,7 +25,7 @@ const CompanySign = () => {
 		});
 		console.log(datos);
 	};
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		if (
 			datos.image.trim() === "" ||
 			datos.name.trim() === "" ||
@@ -39,7 +39,12 @@ const CompanySign = () => {
 		} else {
 			console.log("enviamos formulario");
 			setError(false);
-			actions.registroCompany(datos);
+			let success = await actions.registroCompany(datos);
+			if (success) {
+				history.push("/sign-in");
+			} else {
+				alert("Not...");
+			}
 		}
 	};
 
@@ -93,15 +98,14 @@ const CompanySign = () => {
 									value={datos.identifier}
 									placeholder="EIN (E.E.U.U) / RIF (Venezuela)"
 								/>
-								<Link to="/sign-in">
-									<button
-										className="nikollector-button"
-										onClick={() => {
-											handleSubmit();
-										}}>
-										REGISTER THIS COMPANY
-									</button>
-								</Link>
+								<button
+									type="button"
+									className="nikollector-button"
+									onClick={e => {
+										handleSubmit();
+									}}>
+									REGISTER THIS COMPANY
+								</button>
 							</form>
 						</div>
 					</div>
