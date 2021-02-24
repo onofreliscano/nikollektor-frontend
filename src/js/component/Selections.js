@@ -1,7 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React, { useState } from "react";
-import nikolector from "../../img/nikolector.jpg";
 import { useHistory } from "react-router-dom";
+import nikollectorImgStep1Girls from "../../img/img-step1-girls.png";
+import { fadeInDown } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 const Election = () => {
 	const [rol, setRol] = useState("");
@@ -17,43 +19,71 @@ const Election = () => {
 		}
 	};
 
+	const styles = {
+		fadeInDown: {
+			animation: "1s 0.5s",
+			animationName: Radium.keyframes(fadeInDown, "fadeInDown")
+		}
+	};
+
 	return (
-		<div className="containerPrincipal">
-			<div className="mr-5">
-				<img src={nikolector} />
-			</div>
-			<form>
-				<div className="containerSecundario">
-					<div className="titles">
-						<h1>Registro</h1>
-						<h2>Paso 1</h2>
+		<div className="">
+			<div className="row">
+				<div className="col-sm">
+					<div className="nikollector-container-home-left">
+						STEP 1/3
+						<br />
+						<div className="nikollector-subtitles-sections">Choose your side</div>
 					</div>
-					<div className="parrafo">
-						<p>
-							Bienvenido a nikolector, para que podemos brindarte nuestros servicios primero debes
-							seleccionar una de estas opciones para empezar el registro.
+					<div className="nikollector-instructions-sections">
+						What´s your role in your company?
+						<br />
+						Please select one: <br />
+						<br />
+						<form>
+							<label>
+								<input
+									name="radio"
+									id="radio1"
+									type="radio"
+									value="HR-Manager"
+									onChange={onValueChange}
+								/>
+								<b>HR Manager</b>
+							</label>
 							<br />
-							Que rol cumples en tu compañia?
-						</p>
+							<label>
+								<input
+									name="radio"
+									id="radio2"
+									type="radio"
+									value="Human-Talent"
+									onChange={onValueChange}
+								/>
+								<b>Human Talent</b>
+							</label>
+							<br />
+							<br />
+							<div> {"You selected: " + rol}</div>
+							<br />
+
+							<button className="nikollector-button" onClick={formSubmit}>
+								LETS CONTINUE
+							</button>
+						</form>
+						<br />
 					</div>
-					<div className="radio">
-						<label>
-							<input type="radio" value="HR-Manager" onChange={onValueChange} />
-							<b>Manager de RRHH</b>
-						</label>
-					</div>
-					<div className="radio">
-						<label>
-							<input type="radio" value="Human-Talent" onChange={onValueChange} />
-							<b>Talento Humano</b>
-						</label>
-					</div>
-					<div>Seleccionaste : {rol}</div>
-					<button className="btn btn-primary" onClick={formSubmit}>
-						Submit
-					</button>
 				</div>
-			</form>
+				<div className="col-sm">
+					<div className="nikollector-container-home-right">
+						<br />
+
+						<StyleRoot>
+							<img src={nikollectorImgStep1Girls} style={styles.fadeInDown} />
+						</StyleRoot>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

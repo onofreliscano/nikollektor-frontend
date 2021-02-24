@@ -1,0 +1,181 @@
+
+/*
+**************************************************************
+FONTS
+**************************************************************
+*/
+@font-face {
+    font-family: "Gidolinya-Regular";
+    src: url("../fonts/Gidolinya-Regular.woff") format("woff");
+}
+
+@import url(//db.onlinewebfonts.com/c/e50f08c648d677fc2b0f52ac98afb797?family=Ayuthaya);
+@font-face {font-family: "Ayuthaya"; 
+    src: url("//db.onlinewebfonts.com/t/e50f08c648d677fc2b0f52ac98afb797.eot"); 
+    src: url("//db.onlinewebfonts.com/t/e50f08c648d677fc2b0f52ac98afb797.eot?#iefix") format("embedded-opentype"), 
+    url("//db.onlinewebfonts.com/t/e50f08c648d677fc2b0f52ac98afb797.woff2") format("woff2"), 
+    url("//db.onlinewebfonts.com/t/e50f08c648d677fc2b0f52ac98afb797.woff") format("woff"), 
+    url("//db.onlinewebfonts.com/t/e50f08c648d677fc2b0f52ac98afb797.ttf") format("truetype"), 
+    url("//db.onlinewebfonts.com/t/e50f08c648d677fc2b0f52ac98afb797.svg#Ayuthaya") format("svg"); 
+} 
+
+/*
+**************************************************************
+HEADER (NAVBAR)
+**************************************************************
+*/
+.nikollector-navbar-main {
+    background-color: white !important;
+    font-family: "Gidolinya-Regular" !important ;
+    padding-left:40px;
+}
+
+.nikollector-nav-item a:link, a:visited, a:active  { 
+    color: #626262;
+    font-family: "Gidolinya-Regular" !important ;
+    font-size: 23px !important;
+    margin-right:25px;
+}
+
+.nikollector-nav-item a:hover  { 
+    color: #8560a8 !important;
+    font-family: "Gidolinya-Regular" !important ;
+    font-size: 23px !important;
+    margin-right:25px;
+}
+
+/*
+**************************************************************
+BODY
+**************************************************************
+*/
+.col-sm {
+    padding-left:0px;
+    margin-left:0px;
+    background-color: #01b5e5;;
+}
+.nikollector-container-home-left {
+    background-color: #01b5e5;
+    color: white;
+    font-family: "Ayuthaya" !important ;
+    font-size: 35px;
+    padding: 40px;
+}
+.nikollector-container-home-right {
+    background-color: #01b5e5;
+    color: white;
+    font-family: "Ayuthaya" !important ;
+    font-size: 35px;
+    padding: 40px;  
+}
+
+.nikollector-form {
+    background-color: transparent;
+    margin-top:30px;
+    display:block;   
+}
+.nikollector-body-text{
+    color: white;
+    font-family: "Ayuthaya" !important ;
+    font-size: 20px;
+    padding: 0px;
+    text-decoration: none;
+}
+/*
+**************************************************************
+INPUTS, BUTTONS AND FORMS
+**************************************************************
+*/
+
+.nikollector-button {
+    background-color: #8560a8; /* Green */
+    border: 2px solid black;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 70px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+input[type=text]:focus, [type=password]:focus, [type=text], [type=password], input[type=number]:focus, [type=number] {
+    width: 95%;
+    float:initial;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+    background-color: white;
+    color: gray;
+    border-radius: 0px;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    border: 6px solid white ;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+  
+input[type="radio"]:checked {
+    background-color: #626262;
+}
+
+.nikollector-error-msg01 {
+    font-family: "Ayuthaya" !important ;
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.nikollector-subtitles-sections {
+    color: #8560a8;
+    font-family: "Ayuthaya" !important;
+    
+}
+
+.nikollector-instructions-sections {
+    font-size: 20px;
+    font-family: "Ayuthaya" !important ;
+    padding-left: 40px;
+    color: white;
+}
+
+
+/*
+**************************************************************
+PEOPLE IMAGES AND ELEMENTS (INCLUDING BIG ANIMATIONS ElEMENTS)
+**************************************************************
+*/
+
+.img-based-on {
+  padding: 40px;  
+}
+
+.img-home-hero {
+    transform: translateY(50%);
+    padding-bottom: 40px;
+    padding-top: -60px;
+}
+
+#rowTableAnimation  {
+    display: table-row;
+    width: 100% !important;
+}
+
+#leftTableAnimation, #rightTableAnimation, #middleTableAnimation {
+    display: table-cell;
+    padding: 20px;
+    background-color: transparent;
+    align-items: center;
+    width: 35%;
+    height: 200px;
+}
