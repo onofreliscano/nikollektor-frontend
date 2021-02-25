@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const MoodHistory = () => {
-	const initialState = { };
+	const initialState = {};
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);

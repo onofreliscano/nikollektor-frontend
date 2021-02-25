@@ -78,8 +78,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let resultado = await respuesta.json();
 						console.log(resultado);
 						setStore({
-							human_talent : resultado
-						})
+							human_talent: resultado
+						});
 					}
 				} catch (error) {
 					console.log("explote", error);
@@ -105,23 +105,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			listTeams: async jwt => {
 				if (!jwt) {
 					const store = getStore();
-					jwt = store.jwt
+					jwt = store.jwt;
 				}
 				try {
 					const respuesta = await fetch(`${BASE_URL}/teams`, {
 						method: "GET",
 						body: JSON.stringify(datos),
-						headers: { 
-                            Authorization: `Bearer ${jwt}`,  
-							"Content-Type": "application/json" 
+						headers: {
+							Authorization: `Bearer ${jwt}`,
+							"Content-Type": "application/json"
 						}
 					});
 					if (respuesta.ok) {
 						let resultado = await respuesta.json();
 						console.log(resultado);
 						setStore({
-							teams : resultado
-						})
+							teams: resultado
+						});
 					}
 				} catch (error) {
 					console.log("explote", error);
