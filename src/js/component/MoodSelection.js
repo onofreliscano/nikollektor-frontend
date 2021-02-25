@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const Moodselection = () => {
-	const initialState = { face_value: "", comment: "" };
+	const initialState = { face_value: null, comment: "" };
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
-	let date = new Date(2021, 1, 23);
+	let date = new Date();
 	let Year = date.getFullYear();
 	let Month = date.getMonth();
 	let Day = date.getDate();
@@ -18,18 +18,18 @@ const Moodselection = () => {
 			[e.target.name]: e.target.value
 		});
 		console.log(datos);
-		if (datos.name == "Angry") {
-			faceAngry == datos.face_value;
+		if (datos.name == "Awesome") {
+			datos.face_value == 5;
 		}
-		// if (datos.name == "Happy") {
-		// 	datos.face_value == 4;
-		// } else if (datos.name == "Neutral") {
-		// 	datos.face_value == 3;
-		// } else if (datos.name == "Sad") {
-		// 	datos.face_value == 2;
-		// } else if (datos.name == "Angry") {
-		// 	datos.face_value == 1;
-		// }
+		if (datos.name == "Happy") {
+			datos.face_value == 4;
+		} else if (datos.name == "Neutral") {
+			datos.face_value == 3;
+		} else if (datos.name == "Sad") {
+			datos.face_value == 2;
+		} else if (datos.name == "Angry") {
+			datos.face_value == 1;
+		}
 	};
 	const handleSubmit = e => {
 		console.log("enviamos formulario");
@@ -45,46 +45,20 @@ const Moodselection = () => {
 				<h4>1)Whats your mood today?</h4>
 			</div>
 			<div className="moods">
-				<button
-					className="btn btn-primary"
-					key="valor1"
-					name="Awesome"
-					value={(datos.faceAwesome = 1)}
-					onClick={handleChange}>
-					Awesome
+				<button className="btn btn-primary" name="Awesome" value={datos.face_value} onClick={handleChange}>
+					😀
 				</button>
-				<button
-					className="btn btn-primary"
-					key="valor2"
-					name="Happy"
-					value={(datos.faceHappy = 2)}
-					onClick={handleChange}>
-					Happy
+				<button className="btn btn-primary" name="Happy" value={datos.face_value} onClick={handleChange}>
+					😁
 				</button>
-				<button
-					className="btn btn-primary"
-					key="valor3"
-					name="Neutral"
-					// value={datos.face_value}
-					value={(datos.faceNeutral = 3)}
-					onClick={handleChange}>
-					Neutral
+				<button className="btn btn-primary" name="Neutral" value={datos.face_value} onClick={handleChange}>
+					😐
+				</button> 
+				<button className="btn btn-primary" name="Sad" value={datos.face_value} onClick={handleChange}>
+					🙁
 				</button>
-				<button
-					className="btn btn-primary"
-					key="valor4"
-					name="Sad"
-					value={(datos.faceSad = 4)}
-					onClick={handleChange}>
-					Sad
-				</button>
-				<button
-					className="btn btn-primary"
-					key="valor5"
-					name="Angry"
-					value={(datos.faceAngry = 5)}
-					onClick={handleChange}>
-					Angry
+				<button className="btn btn-primary" name="Angry" value={datos.face_value} onClick={handleChange}>
+					😡
 				</button>
 				{Day}/{Month + 1}/{Year}
 				{
