@@ -101,13 +101,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			registroMoods: async datos => {
+			registroMoods: async (datos, jwt) => {
+				if (!jwt) {
+					const store = getStore();
+					jwt = store.jwt;
+				}
+
 				try {
 					const respuesta = await fetch(`${BASE_URL}/moods`, {
 						method: "POST",
 						body: JSON.stringify(datos),
-						headers: { "Content-Type": "application/json" }
-						// jwt: `Bearer${jwt}`
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${jwt}`
+						}
 					});
 					if (respuesta.ok) {
 						let resultado = await respuesta.json();
