@@ -98,14 +98,16 @@ const CompanySign = () => {
 									value={datos.identifier}
 									placeholder="EIN (E.E.U.U) / RIF (Venezuela)"
 								/>
-								<button
-									type="button"
-									className="nikollector-button"
-									onClick={e => {
-										handleSubmit();
-									}}>
-									REGISTER THIS COMPANY
-								</button>
+								<Link to="/sign-in">
+									<button
+										type="button"
+										className="nikollector-button"
+										onClick={e => {
+											handleSubmit();
+										}}>
+										REGISTER THIS COMPANY
+									</button>
+								</Link>
 							</form>
 						</div>
 					</div>

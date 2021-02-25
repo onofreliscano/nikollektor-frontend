@@ -1,37 +1,64 @@
 import React, { useContext, useState } from "react";
-import nikolector from "../../img/nikolector.jpg";
-import { Link, Redirect } from "react-router-dom";
-import { Navbar } from "./navbar";
+import nikollectorImgStep3Thinking from "../../img/img-step3-thinking.png";
 import { Context } from "../store/appContext";
+import { fadeInDown } from "react-animations";
+import Radium, { StyleRoot } from "radium";
+import { Link, useHistory } from "react-router-dom";
+
+// import {store} from
+
+const styles = {
+	fadeInDown: {
+		animation: "1s 0.5s",
+		animationName: Radium.keyframes(fadeInDown, "fadeInDown")
+	}
+};
 
 const Welcome = () => {
+	const initialState = { email: "", full_name: "", password: "", company_id: "" };
+	const [datos, setDatos] = useState(initialState);
+	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
+	const handleChange = e => {
+		setDatos({
+			...datos,
+			[e.target.name]: e.target.value
+		});
+		console.log(datos);
+	};
+	const handleSubmit = async e => {
+		if (
+			datos.email.trim() === "" ||
+			datos.full_name.trim() === "" ||
+			datos.password.trim() === ""
+			// datos.password.trim() === "" ||
+			// datos.company_id.trim() === ""
+		) {
+			setError(true);
+		} else {
+			console.log("enviamos formulario");
+			setError(false);
+			let success = await actions.registroManager(datos);
+			if (success) {
+				history.push("/");
+			} else {
+				alert("NOT!");
+			}
+		}
+	};
+
 	return (
-		<div>
-			{store.jwt && !store.is_manager ? (
-				<div className="container">
-					<h1>Welcome!</h1>
-					<br />
-					<h1>Time to play</h1>
-					<br />
-					<h3>Select what you want to do</h3>
-					<br />
-					<Link to="/Team-sign">
-						<button className="btn btn-primary">Add teams</button>
-					</Link>
-					<Link to="/human-talent-sign">
-						<button className="btn btn-primary">Add Human Talent</button>
-					</Link>
-					<Link to="/MoodSelection">
-						<button className="btn btn-primary">Dashboards</button>
-					</Link>
-					<div className="mr-5">
-						<img src={nikolector} />
-					</div>
+		<div className="">
+			<div className="row">
+				<div className="col-sm">
+					<div className="nikollector-container-home-left">LEFT</div>
 				</div>
-			) : (
-				<Redirect to="/home" />
-			)}
+				<div className="col-sm">
+					<div className="nikollector-container-home-right">RIGHT</div>
+				</div>
+			</div>
+			<div className="row">BOTTOM</div>
 		</div>
 	);
 };

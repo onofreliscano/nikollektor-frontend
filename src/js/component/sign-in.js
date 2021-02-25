@@ -3,7 +3,8 @@ import nikollectorImgStep3Thinking from "../../img/img-step3-thinking.png";
 import { Context } from "../store/appContext";
 import { fadeInDown } from "react-animations";
 import Radium, { StyleRoot } from "radium";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 // import {store} from
 
 const styles = {
@@ -89,6 +90,14 @@ const SignIn = () => {
 									value={datos.company_id}
 									placeholder="company ID (this is temporary)"
 								/> */}
+								<Link to="/Welcome">
+									<button className="nikollector-button" type="button">
+										TAKE ME 2 THE PARTY! TEMP
+									</button>
+								</Link>
+
+								{/* 
+								//ESTE ES EL DE MAURICIO
 								<button
 									className="nikollector-button"
 									type="button"
@@ -96,9 +105,17 @@ const SignIn = () => {
 										handleSubmit();
 									}}>
 									TAKE ME 2 THE PARTY!
-								</button>
+								</button> */}
+
 								<br />
-								{error ? <div>soy un error, todos los campos deben ser validos</div> : null}
+								{error ? (
+									<div className="nikollector-error-msg01">
+										<br />
+										All fields are necessary!
+										<br />
+										Please fill them
+									</div>
+								) : null}
 							</form>
 						</div>
 					</div>

@@ -45,7 +45,7 @@ const Layout = () => {
 						<Route exact path="/selections">
 							<Selections />
 						</Route>
-						<Route exact path="/welcome">
+						<Route exact path="/Welcome">
 							<Welcome />
 						</Route>
 						<Route exact path="/human-talent-sign">
