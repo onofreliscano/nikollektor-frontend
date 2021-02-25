@@ -17,6 +17,8 @@ import TeamSignIn from "./component/Team-sign";
 import Welcome from "./component/Welcome";
 import MoodSelection from "./component/MoodSelection";
 import Dashboards from "./views/Dashboards";
+import MoodHistory from "./component/MoodHistory";
+import Farewell from "./component/Farewell";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +41,9 @@ const Layout = () => {
 						<Route exact path="/company-sign">
 							<CompanySign />
 						</Route>
+						<Route exact path="/MoodHistory">
+							<MoodHistory />
+						</Route>
 						<Route exact path="/MoodSelection">
 							<MoodSelection />
 						</Route>
@@ -59,6 +64,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/dashboards">
 							<Dashboards />
+						</Route>
+						<Route exact path="/Farewell">
+							<Farewell />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
