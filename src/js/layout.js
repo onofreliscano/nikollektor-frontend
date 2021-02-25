@@ -7,7 +7,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/Navbar";
+import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import SignIn from "./component/sign-in";
 import CompanySign from "./component/company-sign";
@@ -45,7 +45,7 @@ const Layout = () => {
 						<Route exact path="/selections">
 							<Selections />
 						</Route>
-						<Route exact path="/Welcome">
+						<Route exact path="/welcome">
 							<Welcome />
 						</Route>
 						<Route exact path="/human-talent-sign">

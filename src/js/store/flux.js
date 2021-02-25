@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 
-const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://5000-cyan-dog-9qw26vi0.ws-us03.gitpod.io";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -9,16 +10,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			registroManager: async datos => {
+				const store = getStore();
+				datos["company_id"] = store.newCompany.id;
 				try {
 					const respuesta = await fetch(`${BASE_URL}/signup_manager`, {
 						method: "POST",
 						body: JSON.stringify(datos),
 						headers: { "Content-Type": "application/json" }
 					});
-					let resultado = await respuesta.json();
-					console.log(resultado);
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						console.log(resultado);
+						return true;
+					} else {
+						return false;
+					}
 				} catch (error) {
 					console.log("explote", error);
+					return false;
 				}
 			},
 
@@ -29,10 +38,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						body: JSON.stringify(datos),
 						headers: { "Content-Type": "application/json" }
 					});
-					let resultado = await respuesta.json();
-					console.log(resultado);
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						setStore({ newCompany: resultado });
+						return true;
+					} else {
+						return false;
+					}
 				} catch (error) {
 					console.log("explote", error);
+					return false;
 				}
 			},
 
@@ -83,8 +98,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return true;
 					}
 					return false;
-					// let history = useHistory();
-					// history.push("/Welcome");
 				} catch (error) {
 					console.log("explote", error);
 				}

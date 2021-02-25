@@ -56,7 +56,7 @@ export const Home = () => {
 			setError(false);
 			let succes = await actions.login(datos);
 			if (succes) {
-				history.push("/Welcome");
+				history.push("/welcome");
 			}
 		}
 	};
