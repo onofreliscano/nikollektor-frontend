@@ -106,14 +106,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const respuesta = await fetch(`${BASE_URL}/moods`, {
 						method: "POST",
 						body: JSON.stringify(datos),
-						headers: { "Content-Type": "application/json" }
+						headers: { "Content-Type": "application/json" },
+						jwt: `Bearer${jwt}`
 					});
 					if (respuesta.ok) {
 						let resultado = await respuesta.json();
 						console.log(resultado);
 						setStore({
 							jwt: resultado.jwt,
-							is_manager: resultado.is_manager
+							is_manager: resultado.is_human_talent
 						});
 						return true;
 					}
