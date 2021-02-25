@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 
-// const BASE_URL = "http://localhost:5000";
-const BASE_URL = "https://5000-cyan-dog-9qw26vi0.ws-us03.gitpod.io";
+const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "https://5000-cyan-dog-9qw26vi0.ws-us03.gitpod.io";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -107,6 +107,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const respuesta = await fetch(`${BASE_URL}/moods`, {
 						method: "POST",
+						body: JSON.stringify(datos),
+						headers: { "Content-Type": "application/json" }
+					});
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						console.log(resultado);
+						setStore({
+							jwt: resultado.jwt,
+							is_manager: resultado.is_manager
+						});
+						return true;
+					}
+					return false;
+				} catch (error) {
+					console.log("explote", error);
+				}
+			},
+			Moods: async datos => {
+				try {
+					const respuesta = await fetch(`${BASE_URL}/moods`, {
+						method: "GET",
 						body: JSON.stringify(datos),
 						headers: { "Content-Type": "application/json" }
 					});

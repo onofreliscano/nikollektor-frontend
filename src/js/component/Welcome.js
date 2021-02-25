@@ -8,30 +8,35 @@ const Welcome = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<div>
-			{store.jwt && !store.is_manager ? (
-				<div className="container">
-					<h1>Welcome!</h1>
-					<br />
-					<h1>Time to play</h1>
-					<br />
-					<h3>Select what you want to do</h3>
-					<br />
-					<Link to="/Team-sign">
-						<button className="btn btn-primary">Add teams</button>
-					</Link>
-					<Link to="/human-talent-sign">
-						<button className="btn btn-primary">Add Human Talent</button>
-					</Link>
-					<Link to="/MoodSelection">
-						<button className="btn btn-primary">Dashboards</button>
-					</Link>
-					<div className="mr-5">
-						<img src={nikolector} />
+			<div className="row">
+				{store.jwt && store.is_manager ? (
+					<div className="container">
+						<h1>Welcome!</h1>
+						<br />
+						<h1>Time to play</h1>
+						<br />
+						<h3>Select what you want to do</h3>
+						<br />
+						<Link to="/Team-sign">
+							<button className="btn btn-primary">Add teams</button>
+						</Link>
+						<Link to="/Farewell">
+							<button className="btn btn-primary">chao</button>
+						</Link>
+						<Link to="/human-talent-sign">
+							<button className="btn btn-primary">Add Human Talent</button>
+						</Link>
+						<Link to="/Dashboards">
+							<button className="btn btn-primary">Dashboards</button>
+						</Link>
+						<div className="mr-5">
+							<img src={nikolector} />
+						</div>
 					</div>
-				</div>
-			) : (
-				<Redirect to="/home" />
-			)}
+				) : (
+					<Redirect to="/MoodSelection" />
+				)}
+			</div>
 		</div>
 	);
 };

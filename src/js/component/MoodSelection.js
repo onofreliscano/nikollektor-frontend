@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const Moodselection = () => {
 	const initialState = { face_value: null, comment: "" };
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 	let date = new Date();
 	let Year = date.getFullYear();
 	let Month = date.getMonth();
@@ -17,27 +19,12 @@ const Moodselection = () => {
 			...datos,
 			[e.target.name]: e.target.value
 		});
-		console.log(datos);
-		if (datos.name == "Awesome") {
-			setDatos({
-				...datos,
-				face_value = 5
-			});
-		}
-		if (datos.name == "Happy") {
-			datos.face_value = 4;
-		} else if (datos.name == "Neutral") {
-			datos.face_value = 3;
-		} else if (datos.name == "Sad") {
-			datos.face_value = 2;
-		} else if (datos.name == "Angry") {
-			datos.face_value = 1;
-		}
 	};
 	const handleSubmit = e => {
 		console.log("enviamos formulario");
 		setError(false);
 		actions.registroMoods(datos);
+		//  history.push("MoodHistory");
 	};
 
 	return (
@@ -46,29 +33,69 @@ const Moodselection = () => {
 				<h1>Step 3/3 We are done! Lets do some M3.0</h1>
 				<br />
 				<h4>1)Whats your mood today?</h4>
+				<Link to="MoodHistory">
+					<button className="history"> History </button>
+				</Link>
 			</div>
 			<div className="moods">
-				<button 
-					className={datos.face_value == 5 ? "btn btn-primary" : "btn btn-outline-primary"} 
+				<button
+					className={datos.face_value == 5 ? "btn btn-primary" : "btn btn-outline-primary"}
 					name="awesome"
-					value={1}
-					onClick={e => setDatos({
-						name: e.target.name, 
-						face_value: e.target.value
-					})}
-				>
+					value={5}
+					onClick={e =>
+						setDatos({
+							name: e.target.name,
+							face_value: e.target.value
+						})
+					}>
 					😀
 				</button>
-				<button className="btn btn-primary" name="name" value={2} onClick={handleChange}>
+				<button
+					className={datos.face_value == 4 ? "btn btn-primary" : "btn btn-outline-primary"}
+					name="happy"
+					value={4}
+					onClick={e =>
+						setDatos({
+							name: e.target.name,
+							face_value: e.target.value
+						})
+					}>
 					😁
 				</button>
-				<button className="btn btn-primary" name="name" value={datos.face_value} onClick={handleChange}>
+				<button
+					className={datos.face_value == 3 ? "btn btn-primary" : "btn btn-outline-primary"}
+					name="neutral"
+					value={3}
+					onClick={e =>
+						setDatos({
+							name: e.target.name,
+							face_value: e.target.value
+						})
+					}>
 					😐
 				</button>
-				<button className="btn btn-primary" name="Sad" value={datos.face_value} onClick={handleChange}>
+				<button
+					className={datos.face_value == 2 ? "btn btn-primary" : "btn btn-outline-primary"}
+					name="sad"
+					value={2}
+					onClick={e =>
+						setDatos({
+							name: e.target.name,
+							face_value: e.target.value
+						})
+					}>
 					🙁
 				</button>
-				<button className="btn btn-primary" name="Angry" value={datos.face_value} onClick={handleChange}>
+				<button
+					className={datos.face_value == 1 ? "btn btn-primary" : "btn btn-outline-primary"}
+					name="angry"
+					value={1}
+					onClick={e =>
+						setDatos({
+							name: e.target.name,
+							face_value: e.target.value
+						})
+					}>
 					😡
 				</button>
 				{Day}/{Month + 1}/{Year}
@@ -79,10 +106,12 @@ const Moodselection = () => {
 					</p>
 				}
 			</div>
-			<div className="comment">
+			<div className="commentario">
 				<h4>2)Why is that?</h4>
 				<input
 					name="comment"
+					type="text"
+					onChange={handleChange}
 					placeholder="Explain your mood, so human resources can act"
 					value={datos.comment}
 				/>
