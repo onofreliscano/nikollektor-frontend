@@ -6,7 +6,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			jwt: null,
-			is_manager: false
+			is_manager: false,
+			human_talent: [],
+			teams: []
 		},
 		actions: {
 			registroManager: async datos => {
@@ -65,6 +67,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			listHumans: async datos => {
+				try {
+					const respuesta = await fetch(`${BASE_URL}/human-talent`, {
+						method: "GET",
+						body: JSON.stringify(datos),
+						headers: { "Content-Type": "application/json" }
+					});
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						console.log(resultado);
+						setStore({
+							human_talent : resultado
+						})
+					}
+				} catch (error) {
+					console.log("explote", error);
+				}
+			},
+
 			registroTeam: async datos => {
 				try {
 					const respuesta = await fetch(`${BASE_URL}/team_create`, {
@@ -81,7 +102,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			listTeams: async jwt => {
+				if (!jwt) {
+					const store = getStore();
+					jwt = store.jwt
+				}
+				try {
+					const respuesta = await fetch(`${BASE_URL}/teams`, {
+						method: "GET",
+						body: JSON.stringify(datos),
+						headers: { 
+                            Authorization: `Bearer ${jwt}`,  
+							"Content-Type": "application/json" 
+						}
+					});
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						console.log(resultado);
+						setStore({
+							teams : resultado
+						})
+					}
+				} catch (error) {
+					console.log("explote", error);
+				}
+			},
+
 			login: async datos => {
+				const actions = getActions();
 				try {
 					const respuesta = await fetch(`${BASE_URL}/login`, {
 						method: "POST",
@@ -95,6 +143,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							jwt: resultado.jwt,
 							is_manager: resultado.is_manager
 						});
+						actions.listTeams(resultado.jwt);
 						return true;
 					}
 					return false;
