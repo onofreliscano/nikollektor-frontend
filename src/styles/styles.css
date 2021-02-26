@@ -52,7 +52,7 @@ BODY
 .col-sm {
     padding-left:0px;
     margin-left:0px;
-    background-color: #01b5e5;;
+    background-color: #01b5e5;
 }
 .nikollector-container-home-left {
     background-color: #01b5e5;
@@ -61,6 +61,16 @@ BODY
     font-size: 35px;
     padding: 40px;
 }
+
+
+.nikollector-container-home-left-complete {
+    background-color: #01b5e5;
+    color: white;
+    font-family: "Ayuthaya" !important ;
+    font-size: 35px;
+    padding: 40px;
+}
+
 .nikollector-container-home-right {
     background-color: #01b5e5;
     color: white;
@@ -109,6 +119,16 @@ input[type=text]:focus, [type=password]:focus, [type=text], [type=password], inp
     background-color: white;
     color: gray;
     border-radius: 0px;
+
+}
+
+textarea, textarea:focus{
+   background-color: white;
+   border: 2px solid black;
+   font-size: 15px;
+   padding: 10px;
+   color: black;
+   
 }
 
 input[type="radio"] {
@@ -149,6 +169,10 @@ input[type="radio"]:checked {
     color: white;
 }
 
+ul {
+    list-style-image: url('../img/img-bullet.png');
+  }
+
 
 /*
 **************************************************************
@@ -178,4 +202,102 @@ PEOPLE IMAGES AND ELEMENTS (INCLUDING BIG ANIMATIONS ElEMENTS)
     align-items: center;
     width: 35%;
     height: 200px;
+}
+
+.nikollector-welcome-center {
+    text-align: center;
+    background-color: #01b5e5;
+}
+
+#rowTableAnimationSmall {
+    width: 300px;   
+}
+
+#leftTableAnimationSmall {
+    display: table-cell;
+    padding: 5px;
+    background-color: transparent;
+    align-items: center;
+    width: 220px;
+    height: 20px;
+}
+
+#rightTableAnimationSmall, #middleTableAnimationSmall {
+    display: table-cell;
+    padding: 5px;
+    background-color: transparent;
+    align-items: center;
+    width: 10px;
+    height: 20px;
+}
+
+/* DivTable.com */
+
+.divMoodScale {
+    background-image: url('../img/img-mood-bg.png');
+    width: 701px;
+    height: 199px;
+}
+
+.divTable{
+    margin-left: 20px;
+   
+	display: table;
+	
+    border: 0px transparent;
+    width: 690px;
+    background-color: transparent;
+    vertical-align: top !important;
+}
+.divTableRow {
+	display: table-row;
+    border: 0px transparent;
+    width: 100px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+    border: 0px transparent;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	
+    border: 0px transparent;
+    background-color: transparent;
+    padding-top: 100px;
+   
+
+   
+}
+
+.divTableCellText {
+    display: table-cell; 
+    padding-left: 60px;
+    color: gray;
+
+}
+
+
+.divTableBody {
+	display: table-row-group;
+    border: 0px transparent;
+}
+
+.moodIcon {
+    width: 40px;
+    height: auto;
+}
+
+.btn-outline-primary {
+    border: 0px transparent;
+}
+
+.nav-item, .active, .link {
+    background-color: white !important;
+    border: 2px solid black;
+   font-size: 15px;
+   padding: 10px;
+   color: black;
+  
 }

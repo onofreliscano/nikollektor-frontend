@@ -12,13 +12,14 @@ import { Footer } from "./component/footer";
 import SignIn from "./component/sign-in";
 import CompanySign from "./component/company-sign";
 import Selections from "./component/Selections";
-import HumanTalentSign from "./component/human-t-sign";
-import TeamSignIn from "./component/Team-sign";
+
+import TeamSignIn from "./component/TeamSignIn";
 import Welcome from "./component/Welcome";
 import MoodSelection from "./component/MoodSelection";
 import Dashboards from "./views/Dashboards";
 import MoodHistory from "./component/MoodHistory";
 import Farewell from "./component/Farewell";
+import HumanTsign from "./component/HumanTsign";
 
 //create your first component
 const Layout = () => {
@@ -38,6 +39,10 @@ const Layout = () => {
 						<Route exact path="/sign-in">
 							<SignIn />
 						</Route>
+						HumanTsign
+						<Route exact path="/HumanTsign">
+							<HumanTsign />
+						</Route>
 						<Route exact path="/company-sign">
 							<CompanySign />
 						</Route>
@@ -50,13 +55,10 @@ const Layout = () => {
 						<Route exact path="/selections">
 							<Selections />
 						</Route>
-						<Route exact path="/welcome">
+						<Route exact path="/Welcome">
 							<Welcome />
 						</Route>
-						<Route exact path="/human-talent-sign">
-							<HumanTalentSign />
-						</Route>
-						<Route exact path="/Team-sign">
+						<Route exact path="/TeamSignIn">
 							<TeamSignIn />
 						</Route>
 						<Route exact path="/demo">

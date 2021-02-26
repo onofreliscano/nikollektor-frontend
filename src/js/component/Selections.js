@@ -13,7 +13,7 @@ const Selection = () => {
 	};
 	const formSubmit = () => {
 		if (rol === "Human-Talent") {
-			history.push("/human-talent-sign");
+			history.push("/HumanTsign");
 		} else {
 			history.push("/company-sign");
 		}
