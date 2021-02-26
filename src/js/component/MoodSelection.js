@@ -45,7 +45,7 @@ const styles = {
 };
 
 const Moodselection = () => {
-	const initialState = { face_value: null, comment: "" };
+	const initialState = { face_value: null, comment: "", name: "" };
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
@@ -96,8 +96,8 @@ const Moodselection = () => {
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
-												name="awesome"
-												value={5}
+												name="angry"
+												value={1}
 												onClick={e =>
 													setDatos({
 														name: e.target.name,
@@ -116,8 +116,8 @@ const Moodselection = () => {
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
-												name="happy"
-												value={4}
+												name="sad"
+												value={2}
 												onClick={e =>
 													setDatos({
 														name: e.target.name,
@@ -156,8 +156,8 @@ const Moodselection = () => {
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
-												name="sad"
-												value={2}
+												name="happy"
+												value={4}
 												onClick={e =>
 													setDatos({
 														name: e.target.name,
@@ -169,6 +169,7 @@ const Moodselection = () => {
 												</StyleRoot>
 											</button>
 										</div>
+
 										<div className="divTableCell">
 											<button
 												className={
@@ -176,28 +177,8 @@ const Moodselection = () => {
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
-												name="angry"
-												value={1}
-												onClick={e =>
-													setDatos({
-														name: e.target.name,
-														face_value: e.target.value
-													})
-												}>
-												<StyleRoot>
-													<img src={mood05} className="moodIcon" style={styles.bounce05} />
-												</StyleRoot>
-											</button>
-										</div>
-										<div className="divTableCell">
-											<button
-												className={
-													datos.face_value == 1
-														? "btn btn-primary"
-														: "btn btn-outline-primary"
-												}
-												name="angry"
-												value={1}
+												name="awesome"
+												value={5}
 												onClick={e =>
 													setDatos({
 														name: e.target.name,
@@ -210,11 +191,11 @@ const Moodselection = () => {
 											</button>
 										</div>
 										<div className="divTableCellText">
-											FEB, 20th 2021
+											FEB, 26th 2021
 											<br />
 											Your Selection:
+											{datos.name}
 											<br />
-											SAD
 										</div>
 									</div>
 								</div>
