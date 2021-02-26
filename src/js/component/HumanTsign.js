@@ -12,7 +12,7 @@ const styles = {
 	}
 };
 
-const HumanTalentSign = () => {
+const HumanTsign = () => {
 	const initialState = { email: "", full_name: "", password: "", company_id: "", team_id: "" };
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
@@ -92,13 +92,15 @@ const HumanTalentSign = () => {
 									value={datos.team_id}
 									placeholder="team you belong"
 								/>
-								<button
-									className="nikollector-button"
-									onClick={() => {
-										handleSubmit();
-									}}>
-									ADD ME!
-								</button>
+								<Link to="/MoodSelection">
+									<button
+										className="nikollector-button"
+										onClick={() => {
+											handleSubmit();
+										}}>
+										ADD ME!
+									</button>
+								</Link>
 								<br />
 								{error ? <div>soy un error, todos los campos deben ser validos</div> : null}
 							</form>
@@ -118,4 +120,4 @@ const HumanTalentSign = () => {
 	);
 };
 
-export default HumanTalentSign;
+export default HumanTsign;

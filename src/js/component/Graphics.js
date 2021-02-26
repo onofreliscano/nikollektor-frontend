@@ -3,11 +3,18 @@ import { Pie } from "react-chartjs-2";
 
 const Graphic = props => {
 	const data = {
-		labels: ["Company1", "Company2", "Company3"],
+		labels: ["Angry", "Sad", "Neutral", "Shocked", "Happy", "AWESOME!"],
 		datasets: [
 			{
-				data: [25, 10, 75],
-				backgroundColor: ["yellow", "blue", "red"]
+				data: [5, 5, 5, 30, 20, 35],
+				backgroundColor: [
+					"rgba(241,62,61,1)",
+					"rgba(234,92,102,1)",
+					"rgba(250,132,50,1)",
+					"rgba(254,210,49,1)",
+					"rgba(42,230,135,1)",
+					"rgba(34,168,49,1)"
+				]
 			}
 		]
 	};
