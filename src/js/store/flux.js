@@ -1,12 +1,14 @@
 import { useHistory } from "react-router-dom";
 
 const BASE_URL = "http://localhost:5000";
-// const BASE_URL = "https://5000-cyan-dog-9qw26vi0.ws-us03.gitpod.io";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			jwt: null,
-			is_manager: false
+			is_manager: false,
+			human_talent: [],
+			teams: []
 		},
 		actions: {
 			registroManager: async datos => {
@@ -65,12 +67,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			listHumans: async datos => {
+				try {
+					const respuesta = await fetch(`${BASE_URL}/human-talent`, {
+						method: "GET",
+						body: JSON.stringify(datos),
+						headers: { "Content-Type": "application/json" }
+					});
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						console.log(resultado);
+						setStore({
+							human_talent: resultado
+						});
+					}
+				} catch (error) {
+					console.log("explote", error);
+				}
+			},
+
 			registroTeam: async datos => {
 				try {
 					const respuesta = await fetch(`${BASE_URL}/team_create`, {
 						method: "POST",
 						body: JSON.stringify(datos),
-						headers: { "Content-Type": "application/json" }
+						headers: {
+							"Content-Type": "application/json"
+						}
 					});
 					let resultado = await respuesta.json();
 					console.log(resultado);
@@ -79,7 +102,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			listTeams: async jwt => {
+				if (!jwt) {
+					const store = getStore();
+					jwt = store.jwt;
+				}
+				try {
+					const respuesta = await fetch(`${BASE_URL}/teams`, {
+						method: "GET",
+						body: JSON.stringify(datos),
+						headers: {
+							Authorization: `Bearer ${jwt}`,
+							"Content-Type": "application/json"
+						}
+					});
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						console.log(resultado);
+						setStore({
+							teams: resultado
+						});
+					}
+				} catch (error) {
+					console.log("explote", error);
+				}
+			},
+
 			login: async datos => {
+				const actions = getActions();
 				try {
 					const respuesta = await fetch(`${BASE_URL}/login`, {
 						method: "POST",
@@ -93,6 +143,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							jwt: resultado.jwt,
 							is_manager: resultado.is_manager
 						});
+						actions.listTeams(resultado.jwt);
 						return true;
 					}
 					return false;
@@ -101,19 +152,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			registroMoods: async datos => {
+			registroMoods: async (datos, jwt) => {
+				if (!jwt) {
+					const store = getStore();
+					jwt = store.jwt;
+				}
+
 				try {
 					const respuesta = await fetch(`${BASE_URL}/moods`, {
 						method: "POST",
 						body: JSON.stringify(datos),
-						headers: { "Content-Type": "application/json" }
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${jwt}`
+						}
 					});
 					if (respuesta.ok) {
 						let resultado = await respuesta.json();
 						console.log(resultado);
 						setStore({
 							jwt: resultado.jwt,
-							is_manager: resultado.is_manager
+							is_manager: resultado.is_human_talent
 						});
 						return true;
 					}
