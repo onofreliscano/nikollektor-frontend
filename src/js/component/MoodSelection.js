@@ -92,12 +92,12 @@ const Moodselection = () => {
 										<div className="divTableCell">
 											<button
 												className={
-													datos.face_value == 5
+													datos.face_value == 1
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
 												name="angry"
-												value={1}
+												value={(datos.face_value = 1)}
 												onClick={e =>
 													setDatos({
 														name: e.target.name,
@@ -112,17 +112,20 @@ const Moodselection = () => {
 										<div className="divTableCell">
 											<button
 												className={
-													datos.face_value == 4
+													datos.face_value == 2
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
 												name="sad"
 												value={2}
 												onClick={e =>
-													setDatos({
-														name: e.target.name,
-														face_value: e.target.value
-													})
+													setDatos(
+														{
+															name: e.target.name,
+															face_value: e.target.value
+														},
+														console.log(datos.face_value)
+													)
 												}>
 												<StyleRoot>
 													<img src={mood02} className="moodIcon" style={styles.bounce02} />
@@ -152,12 +155,12 @@ const Moodselection = () => {
 										<div className="divTableCell">
 											<button
 												className={
-													datos.face_value == 2
+													datos.face_value == 4
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
 												name="happy"
-												value={4}
+												value={(datos.face_value = 4)}
 												onClick={e =>
 													setDatos({
 														name: e.target.name,
@@ -173,7 +176,7 @@ const Moodselection = () => {
 										<div className="divTableCell">
 											<button
 												className={
-													datos.face_value == 1
+													datos.face_value == 5
 														? "btn btn-primary"
 														: "btn btn-outline-primary"
 												}
@@ -201,6 +204,14 @@ const Moodselection = () => {
 								</div>
 							</div>
 						</div>
+						{/* <input
+							type="text"
+							placeholder="human id"
+							className="form-control"
+							name="human_t.id"
+							onChange={handleChange}
+							value={datos.human_t.id}
+						/> */}
 						<br />
 						<br />
 						2. Why is that?

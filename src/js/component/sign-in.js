@@ -19,6 +19,7 @@ const SignIn = () => {
 	const [datos, setDatos] = useState(initialState);
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
+
 	const history = useHistory();
 	const handleChange = e => {
 		setDatos({
@@ -28,13 +29,7 @@ const SignIn = () => {
 		console.log(datos);
 	};
 	const handleSubmit = async e => {
-		if (
-			datos.email.trim() === "" ||
-			datos.full_name.trim() === "" ||
-			datos.password.trim() === ""
-			// datos.password.trim() === "" ||
-			// datos.company_id.trim() === ""
-		) {
+		if (datos.email.trim() === "" || datos.full_name.trim() === "" || datos.password.trim() === "") {
 			setError(true);
 		} else {
 			console.log("enviamos formulario");
@@ -90,11 +85,15 @@ const SignIn = () => {
 									value={datos.company_id}
 									placeholder="company ID (this is temporary)"
 								/> */}
-								<Link to="/Welcome">
-									<button className="nikollector-button" type="button">
-										TAKE ME 2 THE PARTY! TEMP
-									</button>
-								</Link>
+
+								<button
+									className="nikollector-button"
+									type="button"
+									onClick={() => {
+										handleSubmit();
+									}}>
+									TAKE ME 2 THE PARTY! TEMP
+								</button>
 
 								{/* 
 								//ESTE ES EL DE MAURICIO

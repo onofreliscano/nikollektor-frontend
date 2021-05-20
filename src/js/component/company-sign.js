@@ -26,13 +26,7 @@ const CompanySign = () => {
 		console.log(datos);
 	};
 	const handleSubmit = async e => {
-		if (
-			datos.image.trim() === "" ||
-			datos.name.trim() === "" ||
-			datos.country.trim() === "" ||
-			datos.city.trim() === "" ||
-			datos.identifier.trim() === ""
-		) {
+		if (datos.name.trim() === "" || datos.country.trim() === "" || datos.city.trim() === "") {
 			setError(true);
 
 			return;
@@ -98,16 +92,24 @@ const CompanySign = () => {
 									value={datos.identifier}
 									placeholder="EIN (E.E.U.U) / RIF (Venezuela)"
 								/>
-								<Link to="/sign-in">
-									<button
-										type="button"
-										className="nikollector-button"
-										onClick={e => {
-											handleSubmit();
-										}}>
-										REGISTER THIS COMPANY
-									</button>
-								</Link>
+
+								<button
+									type="button"
+									className="nikollector-button"
+									onClick={e => {
+										handleSubmit();
+									}}>
+									REGISTER THIS COMPANY
+								</button>
+
+								{error ? (
+									<div className="nikollector-error-msg01">
+										<br />
+										email/password required to access!
+										<br />
+										Please fill them
+									</div>
+								) : null}
 							</form>
 						</div>
 					</div>

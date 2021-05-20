@@ -32,9 +32,8 @@ const TeamSignIn = () => {
 		console.log(datos);
 	};
 	const handleSubmit = e => {
-		if (datos.name.trim() === "" || datos.description.trim() === "" || datos.company_id.trim() === "") {
+		if (datos.name.trim() === "" || datos.description.trim() === "") {
 			setError(true);
-
 			return;
 		} else {
 			console.log("enviamos formulario");
@@ -75,7 +74,8 @@ const TeamSignIn = () => {
 								rows="5"
 							/>
 							<input
-								type="hidden"
+								type="text"
+								placeholder="Company id"
 								className="form-control"
 								name="company_id"
 								onChange={handleChange}
@@ -105,36 +105,13 @@ const TeamSignIn = () => {
 						</StyleRoot>
 						<div className="nikollector-instructions-sections">
 							Your added teams:
-							<br />
-							<br />
 							<ul>
 								<div id="rowTableAnimationSmall">
-									<div id="leftTableAnimationSmall">
-										<li>Developer team</li>
-									</div>
-
-									<div id="middleTableAnimationSmall">
-										<img src={imgEdit} />
-									</div>
-
-									<div id="rightTableAnimationSmall">
-										<img src={imgDelete} />
-									</div>
-								</div>
-								<div id="rowTableAnimationSmall">
-									<div id="leftTableAnimationSmall">
-										<li>UX/UI team</li>
-									</div>
-
-									<div id="middleTableAnimationSmall">
-										<img src={imgEdit} />
-									</div>
-
-									<div id="rightTableAnimationSmall">
-										<img src={imgDelete} />
-									</div>
+									{store.teams.map(team => (console.log(), <li>{team.id}</li>))}
 								</div>
 							</ul>
+							<br />
+							<br />
 						</div>
 					</div>
 				</div>

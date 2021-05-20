@@ -8,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			jwt: null,
 			is_manager: false,
 			human_talent: [],
-			teams: []
+			teams: [],
+			team: {}
 		},
 		actions: {
 			registroManager: async datos => {
@@ -55,13 +56,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			registroHumanTalent: async datos => {
 				try {
-					const respuesta = await fetch(`${BASE_URL}/human_talent`, {
+					const respuesta = await fetch(`${BASE_URL}/human-talent`, {
 						method: "POST",
 						body: JSON.stringify(datos),
 						headers: { "Content-Type": "application/json" }
 					});
-					let resultado = await respuesta.json();
-					console.log(resultado);
+					if (respuesta.ok) {
+						let resultado = await respuesta.json();
+						setStore({ newTalent: resultado });
+						return true;
+					} else {
+						return false;
+					}
+					// let resultado = await respuesta.json();
+					// console.log(resultado);
 				} catch (error) {
 					console.log("explote", error);
 				}
@@ -86,6 +94,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			listTeams: async (id = null) => {
+				let url = BASE_URL + "/teams";
+				// if (id != null) {
+				// 	url += "/" + id;
+				// }
+				let response = await fetch(url);
+				if (response.ok) {
+					let body = await response.json();
+					if (id == null) {
+						setStore({
+							teams: body
+						});
+					} else {
+						setStore({ team: body });
+					}
+					return true;
+				} else {
+					console.log(response.status);
+					return false;
+				}
+			},
+
 			registroTeam: async datos => {
 				try {
 					const respuesta = await fetch(`${BASE_URL}/team_create`, {
@@ -102,31 +132,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			listTeams: async jwt => {
-				if (!jwt) {
-					const store = getStore();
-					jwt = store.jwt;
-				}
-				try {
-					const respuesta = await fetch(`${BASE_URL}/teams`, {
-						method: "GET",
-						body: JSON.stringify(datos),
-						headers: {
-							Authorization: `Bearer ${jwt}`,
-							"Content-Type": "application/json"
-						}
-					});
-					if (respuesta.ok) {
-						let resultado = await respuesta.json();
-						console.log(resultado);
-						setStore({
-							teams: resultado
-						});
-					}
-				} catch (error) {
-					console.log("explote", error);
-				}
-			},
+			// listTeams: async jwt => {
+			// 	if (!jwt) {
+			// 		const store = getStore();
+			// 		jwt = store.jwt;
+			// 	}
+			// 	try {
+			// 		const respuesta = await fetch(`${BASE_URL}/teams`, {
+			// 			method: "GET",
+			// 			body: JSON.stringify(datos),
+			// 			headers: {
+			// 				Authorization: `Bearer ${jwt}`,
+			// 				"Content-Type": "application/json"
+			// 			}
+			// 		});
+			// 		if (respuesta.ok) {
+			// 			let resultado = await respuesta.json();
+			// 			console.log(resultado);
+			// 			setStore({
+			// 				teams: resultado
+			// 			});
+			// 		}
+			// 	} catch (error) {
+			// 		console.log("explote", error);
+			// 	}
+			// },
 
 			login: async (datos, jwt) => {
 				if (!jwt) {
